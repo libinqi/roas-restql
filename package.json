@@ -1,0 +1,43 @@
+{
+  "name": "roas-restql",
+  "version": "1.0.0",
+  "description": "Koa RESTful API middleware based on Sequlizejs",
+  "main": "lib/RestQL.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "export NODE_ENV=test; export DEBUG=; ./node_modules/.bin/mocha --reporter spec --harmony --bail --no-timeouts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/libinqi/roas-restql.git"
+  },
+  "dependencies": {
+    "koa-router": "^7.0.0",
+    "co-body": "^4.0.0",
+    "lodash": "^4.17.0",
+    "qs": "^6.2.0",
+    "debug": "^2.3.2"
+  },
+  "devDependencies": {
+    "koa": "^2.0.0",
+    "mysql": "^2.12.0",
+    "node-uuid": "^1.4.7",
+    "sequelize": "^3.25.0",
+    "glob": "^7.0.3",
+    "mocha": "^2.4.5",
+    "supertest": "^1.2.0"
+  },
+  "keywords": [
+    "koa",
+    "middleware",
+    "sequlizejs",
+    "restful"
+  ],
+  "engines": {
+    "node": ">5.0.0"
+  },
+  "author": "libinqi",
+  "license": "MIT"
+}
