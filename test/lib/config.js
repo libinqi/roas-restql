@@ -1,4 +1,4 @@
 module.exports = {
-  db: "mysql://roas-restql-test:test@localhost/roas-restql-test#UTF8"
+  db: "mysql://root:123456@localhost/roas-restql-test#UTF8"
 }
 

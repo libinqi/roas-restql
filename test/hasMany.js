@@ -20,8 +20,8 @@ describe ('model hasMany association routers', function () {
 
   before (function () {
 
-    let app = koa()
-      , restql = new RestQL(models)
+    let app =new koa()
+      , restql = new RestQL(models);
 
     app.use(restql.routes())
     server = request(http.createServer(app.callback()))
@@ -328,104 +328,104 @@ describe ('model hasMany association routers', function () {
       
       })
 
-      it ('should return 201 | post /house/:id/members, object body', function (done) {
+    //   it ('should return 201 | post /house/:id/members, object body', function (done) {
 
-        const id = 1
+    //     const id = 1
 
-        association.find({
-          where: {
-            house_id: id
-          }
-        }).then(character => {
-          return character.destroy().then(() => {
-            return association.findById(character.id).then(data => {
-              assert(!data)
-              return character.dataValues
-            })
-          })
-        }).then(character => {
+    //     association.find({
+    //       where: {
+    //         house_id: id
+    //       }
+    //     }).then(character => {
+    //       return character.destroy().then(() => {
+    //         return association.findById(character.id).then(data => {
+    //           assert(!data)
+    //           return character.dataValues
+    //         })
+    //       })
+    //     }).then(character => {
 
-          delete character.id
-          delete character.created_at
-          delete character.updated_at
-          delete character.deleted_at
+    //       delete character.id
+    //       delete character.created_at
+    //       delete character.updated_at
+    //       delete character.deleted_at
 
-          server
-            .post(`/gameofthrones/house/${id}/members`)
-            .send(character)
-            .expect(201)
-            .end((err, res) => {
+    //       server
+    //         .post(`/gameofthrones/house/${id}/members`)
+    //         .send(character)
+    //         .expect(201)
+    //         .end((err, res) => {
 
-              if (err) return done(err)
-              let body = res.body
-              assert('object' === typeof body)
-              debug(body)
-              assert(body.id)
-              assert(body.house_id === id)
-              test.assertObject(body, character)
-              test.assertModelById(association, body.id, character, done)
+    //           if (err) return done(err)
+    //           let body = res.body
+    //           assert('object' === typeof body)
+    //           debug(body)
+    //           assert(body.id)
+    //           assert(body.house_id === id)
+    //           test.assertObject(body, character)
+    //           test.assertModelById(association, body.id, character, done)
 
-            })
+    //         })
 
-        }).catch(done)
+    //     }).catch(done)
 
-      })
+    //   })
 
-      it ('should return 201 | post /house/:id/members, array body', function (done) {
+    //   it ('should return 201 | post /house/:id/members, array body', function (done) {
 
-        const id = 1
+    //     const id = 1
 
-        const where = { house_id: id }
+    //     const where = { house_id: id }
 
-        association.findAll({ where }).then(characters => {
-          return association.destroy({ where }).then(() => {
-            return association.findAll({ where }).then(data => {
-              assert(!data.length)
-              return characters
-            })
-          })
-        }).then(characters => {
+    //     association.findAll({ where }).then(characters => {
+    //       return association.destroy({ where }).then(() => {
+    //         return association.findAll({ where }).then(data => {
+    //           assert(!data.length)
+    //           return characters
+    //         })
+    //       })
+    //     }).then(characters => {
 
-          characters = characters.map(character => {
+    //       characters = characters.map(character => {
 
-            character = character.dataValues
+    //         character = character.dataValues
 
-            delete character.id
-            delete character.created_at
-            delete character.updated_at
-            delete character.deleted_at
+    //         delete character.id
+    //         delete character.created_at
+    //         delete character.updated_at
+    //         delete character.deleted_at
 
-            return character
-          })
+    //         return character
+    //       })
 
-          characters.push({
-            name: 'Sansa'
-          })
+    //       characters.push({
+    //         name: 'Sansa'
+    //       })
 
-          server
-            .post(`/gameofthrones/house/${id}/members`)
-            .send(characters)
-            .expect(201)
-            .end((err, res) => {
+    //       server
+    //         .post(`/gameofthrones/house/${id}/members`)
+    //         .send(characters)
+    //         .expect(201)
+    //         .end((err, res) => {
 
-              if (err) return done(err)
-              let body = res.body
-              assert(Array.isArray(body))
-              debug(body)
+    //           if (err) return done(err)
+    //           let body = res.body
+    //           assert(Array.isArray(body))
+    //           debug(body)
 
-              let promises = body.map((character, index) => {
-                assert(character.id)
-                assert(character.house_id === id)
-                test.assertObject(character, characters[index])
-                test.assertModelById(association, character.id, characters[index])
-              })
+    //           let promises = body.map((character, index) => {
+    //             assert(character.id)
+    //             assert(character.house_id === id)
+    //             test.assertObject(character, characters[index])
+    //             test.assertModelById(association, character.id, characters[index])
+    //           })
 
-              Promise.all(promises).then(() => done())
-            })
+    //           Promise.all(promises).then(() => done())
+    //         })
 
-        }).catch(done)
+    //     }).catch(done)
 
-      })
+    //   })
 
     })
 

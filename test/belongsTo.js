@@ -20,8 +20,8 @@ describe ('model belongsTo association routers', function () {
 
   before (function () {
 
-    let app = koa()
-      , restql = new RestQL(models)
+    let app = new koa()
+        , restql = new RestQL(models);
 
     app.use(restql.routes())
     server = request(http.createServer(app.callback()))

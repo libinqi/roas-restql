@@ -1,13 +1,13 @@
 {
   "name": "roas-restql",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Koa RESTful API middleware based on Sequlizejs",
   "main": "lib/RestQL.js",
   "files": [
     "lib"
   ],
   "scripts": {
-    "test": "export NODE_ENV=test; export DEBUG=; ./node_modules/.bin/mocha --reporter spec --harmony --bail --no-timeouts"
+    "test": "./node_modules/.bin/mocha --reporter spec --harmony --bail --no-timeouts"
   },
   "repository": {
     "type": "git",

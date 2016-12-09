@@ -24,7 +24,7 @@ describe ('where', function () {
 
   before (function () {
 
-    let app = koa()
+    let app =new koa()
       , restql = new RestQL(models)
 
     app.use(restql.routes())
