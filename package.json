@@ -1,6 +1,6 @@
 {
   "name": "roas-restql",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Koa RESTful API middleware based on Sequlizejs",
   "main": "lib/RestQL.js",
   "files": [
@@ -14,11 +14,11 @@
     "url": "git+https://github.com/libinqi/roas-restql.git"
   },
   "dependencies": {
-    "koa-router": "^7.0.0",
     "co-body": "^4.0.0",
+    "debug": "^2.3.2",
+    "koa-router": "^7.0.0",
     "lodash": "^4.17.0",
-    "qs": "^6.2.0",
-    "debug": "^2.3.2"
+    "qs": "^6.2.0"
   },
   "devDependencies": {
     "koa": "^2.0.0",
