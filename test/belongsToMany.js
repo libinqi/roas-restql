@@ -139,13 +139,13 @@ describe ('model belongsToMany association routers', function () {
 
     })
 
-    it('should return 404 | get /user/:id/characters', function (done) {
+    it('should return 204 | get /user/:id/characters', function (done) {
 
       const id = 100
 
       server
         .get(`/user/${id}/characters`)
-        .expect(404)
+        .expect(204)
         .end(done)
 
     })
@@ -187,18 +187,18 @@ describe ('model belongsToMany association routers', function () {
 
     })
     
-    it ('should return 404 | get /user/:id/characters/:associationId, wrong id', function (done) {
+    it ('should return 204 | get /user/:id/characters/:associationId, wrong id', function (done) {
 
       const id = 100
 
       server
         .get(`/user/${id}/characters/1`)
-        .expect(404)
+        .expect(204)
         .end(done)
 
     })
 
-    it ('should return 404 | get /user/:id/characters/:associationId, wrong associationId', function (done) {
+    it ('should return 204 | get /user/:id/characters/:associationId, wrong associationId', function (done) {
 
       const id = 1
 
@@ -208,7 +208,7 @@ describe ('model belongsToMany association routers', function () {
 
         server
           .get(`/user/${id}/characters/100`)
-          .expect(404)
+          .expect(204)
           .end(done)
 
       }).catch(done)
@@ -301,13 +301,13 @@ describe ('model belongsToMany association routers', function () {
 
     })
 
-    it ('should return 404 | post /user/:id/characters', function (done) {
+    it ('should return 204 | post /user/:id/characters', function (done) {
 
       const id = 100
 
       server
         .post(`/user/${id}/characters`)
-        .expect(404)
+        .expect(204)
         .end(done)
 
     })
@@ -682,13 +682,13 @@ describe ('model belongsToMany association routers', function () {
 
     })
 
-    it ('should return 404 | put /user/:id/characters', function (done) {
+    it ('should return 204 | put /user/:id/characters', function (done) {
 
       const id = 100
 
       server
         .put(`/user/${id}/characters`)
-        .expect(404)
+        .expect(204)
         .end(done)
 
     })
@@ -813,14 +813,14 @@ describe ('model belongsToMany association routers', function () {
 
     })
 
-    it ('should return 404 | put /user/:id/characters/:associationId, wrong id', function (done) {
+    it ('should return 204 | put /user/:id/characters/:associationId, wrong id', function (done) {
 
       const id = 100
 
       server
         .put(`/user/${id}/characters/1`)
         .send({})
-        .expect(404)
+        .expect(204)
         .end(done)
 
     })
@@ -952,29 +952,29 @@ describe ('model belongsToMany association routers', function () {
 
     })
 
-    it('should return 404 | del /user/:id/characters', function (done) {
+    it('should return 204 | del /user/:id/characters', function (done) {
 
       const id = 100
 
       server
         .del(`/user/${id}/characters`)
-        .expect(404)
+        .expect(204)
         .end(done)
 
     })
 
-    it ('should return 404 | del /user/:id/characters/:associationId, wrong id', function (done) {
+    it ('should return 204 | del /user/:id/characters/:associationId, wrong id', function (done) {
 
       const id = 100
 
       server
         .del(`/user/${id}/characters/1`)
-        .expect(404)
+        .expect(204)
         .end(done)
 
     })
 
-    it ('should return 404 | del /user/:id/characters/:associationId, wrong associationId', function (done) {
+    it ('should return 204 | del /user/:id/characters/:associationId, wrong associationId', function (done) {
 
       const id = 1
 
@@ -984,7 +984,7 @@ describe ('model belongsToMany association routers', function () {
 
         server
           .del(`/user/${id}/characters/100`)
-          .expect(404)
+          .expect(204)
           .end(done)
 
       }).catch(done)

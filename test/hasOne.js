@@ -66,13 +66,13 @@ describe ('model hasOne association routers', function () {
 
     })
 
-    it ('should return 404 | get /house/:id/seat', function (done) {
+    it ('should return 204 | get /house/:id/seat', function (done) {
 
       const id = 100
 
       server
         .get(`/gameofthrones/house/${id}/seat`)
-        .expect(404)
+        .expect(204)
         .end(done)
 
     })
@@ -220,7 +220,7 @@ describe ('model hasOne association routers', function () {
 
     })
 
-    it ('should return 404 | delete /house/:id/seat', function (done) {
+    it ('should return 204 | delete /house/:id/seat', function (done) {
 
       const id = 2
 
@@ -235,7 +235,7 @@ describe ('model hasOne association routers', function () {
 
         server
           .del(`/gameofthrones/house/${id}/seat`)
-          .expect(404)
+          .expect(204)
           .end(done)
 
       }).catch(done)

@@ -91,13 +91,13 @@ describe ('model hasMany association routers', function () {
 
     })
 
-    it ('should return 404 | get /house/:id/members', function (done) {
+    it ('should return 204 | get /house/:id/members', function (done) {
 
       const id = 100
 
       server
         .get(`/gameofthrones/house/${id}/members`)
-        .expect(404)
+        .expect(204)
         .end(done)
 
     })
@@ -137,18 +137,18 @@ describe ('model hasMany association routers', function () {
 
     })
 
-    it ('should return 404 | get /house/:id/members/:associationId, wrong id', function (done) {
+    it ('should return 204 | get /house/:id/members/:associationId, wrong id', function (done) {
 
       const id = 100
 
       server
         .get(`/gameofthrones/house/${id}/members/1`)
-        .expect(404)
+        .expect(204)
         .end(done)
 
     })
 
-    it ('should return 404 | get /house/:id/members/:associationId, wrong associationId', function (done) {
+    it ('should return 204 | get /house/:id/members/:associationId, wrong associationId', function (done) {
 
       const id = 1
 
@@ -158,7 +158,7 @@ describe ('model hasMany association routers', function () {
 
         server
           .get(`/gameofthrones/house/${id}/members/100`)
-          .expect(404)
+          .expect(204)
           .end(done)
 
       }).catch(done)
@@ -239,14 +239,14 @@ describe ('model hasMany association routers', function () {
 
     })
 
-    it ('should return 404 | post /house/:id/members', function (done) {
+    it ('should return 204 | post /house/:id/members', function (done) {
 
       const id = 100
 
       server
         .post(`/gameofthrones/house/${id}/members`)
         .send({})
-        .expect(404)
+        .expect(204)
         .end(done)
 
     })
@@ -538,14 +538,14 @@ describe ('model hasMany association routers', function () {
 
     })
 
-    it ('should return 404 | put /house/:id/members', function (done) {
+    it ('should return 204 | put /house/:id/members', function (done) {
 
       const id = 100
 
       server
         .put(`/gameofthrones/house/${id}/members`)
         .send({})
-        .expect(404)
+        .expect(204)
         .end(done)
 
     })
@@ -710,14 +710,14 @@ describe ('model hasMany association routers', function () {
     })
 
 
-    it ('should return 404 | put /house/:id/members/:associationId, wrong id', function (done) {
+    it ('should return 204 | put /house/:id/members/:associationId, wrong id', function (done) {
 
       const id = 100
 
       server
         .put(`/gameofthrones/house/${id}/members/1`)
         .send({})
-        .expect(404)
+        .expect(204)
         .end(done)
 
     })
@@ -808,13 +808,13 @@ describe ('model hasMany association routers', function () {
 
     })
 
-    it ('should return 404 | delete /house/:id/members', function (done) {
+    it ('should return 204 | delete /house/:id/members', function (done) {
 
       const id = 100
 
       server
         .del(`/gameofthrones/house/${id}/members`)
-        .expect(404)
+        .expect(204)
         .end(done)
 
     })
@@ -858,18 +858,18 @@ describe ('model hasMany association routers', function () {
 
     })
 
-    it ('should return 404 | delete /house/:id/members/:associationId, wrong id', function (done) {
+    it ('should return 204 | delete /house/:id/members/:associationId, wrong id', function (done) {
 
       const id = 100
 
       server
         .del(`/gameofthrones/house/${id}/members/1`)
-        .expect(404)
+        .expect(204)
         .end(done)
 
     })
 
-    it ('should return 404 | delete /house/:id/members/:associationId, wrong associationId', function (done) {
+    it ('should return 204 | delete /house/:id/members/:associationId, wrong associationId', function (done) {
 
       const id = 1
 
@@ -879,7 +879,7 @@ describe ('model hasMany association routers', function () {
 
         server
           .delete(`/gameofthrones/house/${id}/members/1000`)
-          .expect(404)
+          .expect(204)
           .end(done)
 
       }).catch(done)

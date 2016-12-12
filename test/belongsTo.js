@@ -65,7 +65,7 @@ describe ('model belongsTo association routers', function () {
 
     })
 
-    it ('should return 404 | get /seat/:id/house', function (done) {
+    it ('should return 204 | get /seat/:id/house', function (done) {
 
       const id = 3
 
@@ -81,7 +81,7 @@ describe ('model belongsTo association routers', function () {
 
         server
           .get(`/gameofthrones/seat/${id}/house`)
-          .expect(404)
+          .expect(204)
           .end(done)
 
       }).catch(done)
@@ -194,7 +194,7 @@ describe ('model belongsTo association routers', function () {
 
     })
 
-    it ('should return 404 | delete /seat/:id/house', function (done) {
+    it ('should return 204 | delete /seat/:id/house', function (done) {
 
       const id = 2
 
@@ -214,7 +214,7 @@ describe ('model belongsTo association routers', function () {
 
         server
           .del(`/gameofthrones/seat/${seat.id}/house`)
-          .expect(404)
+          .expect(204)
           .end(done)
 
       }).catch(done)
