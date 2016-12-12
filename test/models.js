@@ -369,105 +369,106 @@ describe ('model routers', function () {
 
       })
 
-    //   it ('should return 201 | post /user, object body', function (done) {
+      it ('should return 201 | post /user, object body', function (done) {
 
-    //     const id = 2
+        const id = 2
 
-    //     models.user.findById(id).then(data => {
-    //       return models.user.destroy({
-    //         where: {
-    //           id: data.id
-    //         }
-    //       }).then(() => {
-    //         return models.user.findById(id)
-    //       }).then(res => {
-    //         assert(!res)
-    //         return data
-    //       })
-    //     }).then(data => {
+        models.user.findById(id).then(data => {
+          return models.user.destroy({
+            where: {
+              id: data.id
+            }
+          }).then(() => {
+            return models.user.findById(id)
+          }).then(res => {
+            assert(!res)
+            return data
+          })
+        }).then(data => {
 
-    //       data = data.dataValues
-    //       delete data.created_at
-    //       delete data.updated_at
-    //       delete data.deleted_at
+          data = data.dataValues
+          delete data.created_at
+          delete data.updated_at
+          delete data.deleted_at
 
-    //       data.nickname = uuid()
-    //       debug(data)
+          data.nickname = uuid()
+          debug(data)
 
-    //       server
-    //         .post(`/user`)
-    //         .send(data)
-    //         .expect(201)
-    //         .end((err, res) => {
-    //           if (err) return done(err)
-    //           let body = res.body
-    //           assert(typeof body === 'object')
-    //           debug(body)
+          server
+            .post(`/user`)
+            .send(data)
+            .expect(201)
+            .end((err, res) => {
+              if (err) return done(err)
+              let body = res.body
+              assert(typeof body === 'object')
+              debug(body)
 
-    //           test.assertObject(body, data)
-    //           test.assertModelById(model, body.id, data, done).catch(done)
-    //         })
-    //     })
+              test.assertObject(body, data)
+              test.assertModelById(model, body.id, data, done).catch(done)
+            })
+        })
 
-    //   })
+      })
 
-    //   it ('should return 201 | post /user, array body', function (done) {
+      it ('should return 201 | post /user, array body', function (done) {
 
-    //     const ids = [2]
+        const ids = [2]
 
-    //     models.user.findAll({
-    //       where: {
-    //         id: ids
-    //       }     
-    //     }).then(data => {
-    //       return models.user.destroy({
-    //         where: {
-    //           id: ids
-    //         }
-    //       }).then(() => {
-    //         return models.user.findAll({
-    //           where: {
-    //             id: ids
-    //           }
-    //         })
-    //       }).then(res => {
-    //         assert(!res.length)
-    //         return data
-    //       })
-    //     }).then(data => {
+        models.user.findAll({
+          where: {
+            id: ids
+          }     
+        }).then(data => {
+          return models.user.destroy({
+            where: {
+              id: ids
+            }
+          }).then(() => {
+            return models.user.findAll({
+              where: {
+                id: ids
+              }
+            })
+          }).then(res => {
+            assert(!res.length)
+            return data
+          })
+        }).then(data => {
 
-    //       data = data.map(row => {
-    //         row = row.dataValues
-    //         row.nickname = uuid()
-    //         delete row.id
-    //         delete row.created_at
-    //         delete row.updated_at
-    //         delete row.deleted_at
-    //         return row
-    //       })
+          data = data.map(row => {
+            row = row.dataValues
+            row.nickname = uuid()
+            delete row.id
+            delete row.created_at
+            delete row.updated_at
+            delete row.deleted_at
+            return row
+          })
 
-    //       server
-    //         .post(`/user`)
-    //         .send(data)
-    //         .expect(201)
-    //         .end((err, res) => {
-    //           if (err) return done(err)
-    //           let body = res.body
-    //           assert(Array.isArray(body))
-    //           debug(body)
+          server
+            .post(`/user`)
+            .send(data)
+            .expect(201)
+            .end((err, res) => {
 
-    //           let promises = data.map((row, index) => {
-    //             test.assertObject(body[index], row) 
-    //             return test.assertModelById(model, body[index].id, row)
-    //           })
+              if (err) return done(err)
+              let body = res.body
+              assert(Array.isArray(body))
+              debug(body)
 
-    //           Promise.all(promises)
-    //             .then(() => done())
-    //             .catch(done)
-    //         })
-    //     })
+              let promises = data.map((row, index) => {
+                test.assertObject(body[index], row) 
+                return test.assertModelById(model, body[index].id, row)
+              })
 
-    //   })
+              Promise.all(promises)
+                .then(() => done())
+                .catch(done)
+            })
+        })
+
+      })
 
     })
 
@@ -600,108 +601,108 @@ describe ('model routers', function () {
 
       })
 
-    //   it ('should return 201 | post /user_characters, object body', function (done) {
+      it ('should return 201 | post /user_characters, object body', function (done) {
 
-    //     const id = 2
+        const id = 2
 
-    //     model.findById(id).then(data => {
-    //       return model.destroy({
-    //         where: {
-    //           id: data.id
-    //         }
-    //       }).then(() => {
-    //         return model.findById(id)
-    //       }).then(res => {
-    //         assert(!res)
-    //         return data
-    //       })
-    //     }).then(data => {
+        model.findById(id).then(data => {
+          return model.destroy({
+            where: {
+              id: data.id
+            }
+          }).then(() => {
+            return model.findById(id)
+          }).then(res => {
+            assert(!res)
+            return data
+          })
+        }).then(data => {
 
-    //       data = data.dataValues
-    //       delete data.created_at
-    //       delete data.updated_at
-    //       delete data.deleted_at
+          data = data.dataValues
+          delete data.created_at
+          delete data.updated_at
+          delete data.deleted_at
 
-    //       data.rate = 0
-    //       debug(data)
+          data.rate = 0
+          debug(data)
 
-    //       server
-    //         .post(`/user_characters`)
-    //         .send(data)
-    //         .expect(201)
-    //         .end((err, res) => {
-    //           if (err) return done(err)
-    //           let body = res.body
-    //           assert(typeof body === 'object')
-    //           debug(body)
+          server
+            .post(`/user_characters`)
+            .send(data)
+            .expect(201)
+            .end((err, res) => {
+              if (err) return done(err)
+              let body = res.body
+              assert(typeof body === 'object')
+              debug(body)
 
-    //           test.assertObject(body, data)
-    //           test.assertModelById(model, id, data, done)
-    //           .catch(done)
-    //         })
-    //     })
+              test.assertObject(body, data)
+              test.assertModelById(model, id, data, done)
+              .catch(done)
+            })
+        })
 
-    //   })
+      })
 
-    //   it ('should return 201 | post /user_characters, array body', function (done) {
+      it ('should return 201 | post /user_characters, array body', function (done) {
 
-    //     const ids = [2]
+        const ids = [2]
 
-    //     model.findAll({
-    //       where: {
-    //         id: ids
-    //       }     
-    //     }).then(data => {
-    //       return model.destroy({
-    //         where: {
-    //           id: ids
-    //         }
-    //       }).then(() => {
-    //         return model.findAll({
-    //           where: {
-    //             id: ids
-    //           }
-    //         })
-    //       }).then(res => {
-    //         assert(!res.length)
-    //         return data
-    //       })
-    //     }).then(data => {
+        model.findAll({
+          where: {
+            id: ids
+          }     
+        }).then(data => {
+          return model.destroy({
+            where: {
+              id: ids
+            }
+          }).then(() => {
+            return model.findAll({
+              where: {
+                id: ids
+              }
+            })
+          }).then(res => {
+            assert(!res.length)
+            return data
+          })
+        }).then(data => {
 
-    //       data = data.map(row => {
-    //         row = row.dataValues
-    //         row.rate = 0
-    //         delete row.id
-    //         delete row.created_at
-    //         delete row.updated_at
-    //         delete row.deleted_at
-    //         return row
-    //       })
+          data = data.map(row => {
+            row = row.dataValues
+            row.rate = 0
+            delete row.id
+            delete row.created_at
+            delete row.updated_at
+            delete row.deleted_at
+            return row
+          })
 
-    //       debug(data)
+          debug(data)
 
-    //       server
-    //         .post(`/user_characters`)
-    //         .send(data)
-    //         .expect(201)
-    //         .end((err, res) => {
-    //           if (err) return done(err)
-    //           let body = res.body
-    //           assert(Array.isArray(body))
-    //           debug(body)
+          server
+            .post(`/user_characters`)
+            .send(data)
+            .expect(201)
+            .end((err, res) => {
+              if (err) return done(err)
+              let body = res.body
+              assert(Array.isArray(body))
+              debug(body)
 
-    //           let promises = data.map((row, index) => {
-    //             test.assertObject(body[index], row)
-    //             return test.assertModelById(model, body[index].id, row)
-    //           })
+              let promises = data.map((row, index) => {
+                test.assertObject(body[index], row)
+                return test.assertModelById(model, body[index].id, row)
+              })
 
-    //           Promise.all(promises)
-    //             .then(() => done())
-    //             .catch(done)
-    //         })
-    //     })
+              Promise.all(promises)
+                .then(() => done())
+                .catch(done)
+            })
+        })
 
-    //   })
+      })
 
     })
 

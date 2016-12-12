@@ -303,7 +303,7 @@ describe ('model hasMany association routers', function () {
             name: 'Sansa'
           })
          
-          debug(characters)
+          debug(characters);
 
           server
             .post(`/gameofthrones/house/${id}/members`)
@@ -318,8 +318,8 @@ describe ('model hasMany association routers', function () {
                   house_id: id
                 }
               }).then(data => {
-                assert(data.length === characters.length - 1)
-                assert(!data.find(row => row.name === 'Sansa'))
+                assert(data.length === characters.length-1);
+                assert(!data.find(row => row.name === 'Sansa'));
                 done()
               })
             })
